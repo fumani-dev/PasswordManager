@@ -9,6 +9,12 @@ out/
 #logs
 *.log
 
+#Vault data
+src/passwords.vault
+src/vault.meta
+*.vault
+*.meta
+
 #OS files
 .DS_Store
 Thumbs.dl
