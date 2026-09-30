@@ -1,32 +1,34 @@
 # 🔐 Password Manager
 
-A comprehensive command-line password management application built in Java. Store, view, search, edit, and manage your passwords with persistent file-based storage.
+Command-line password manager in Java with encrypted local vault storage.
 
 ## ✨ Features
 
-- **Add New Entries** – Store passwords with labels and usernames
-- **View All Entries** – Display all saved passwords with numbered entries
-- **Search by Label** – Quickly find entries using partial or full label matching
-- **Edit Entries** – Modify passwords, labels, or usernames with confirmation prompts
-- **Delete Entries** – Remove unwanted entries with safety confirmation
-- **Persistent Storage** – Automatically saves to `passwords.txt` on every change
-- **Input Validation** – Handles invalid inputs gracefully without crashing
-- **Case-Insensitive Search** – Search for labels regardless of case
+- Master password onboarding and vault unlock
+- AES-GCM encrypted storage at rest (`passwords.vault`)
+- Add/edit/delete entries with label, username, password, URL, notes, and tags
+- Built-in password generator (length and character set options)
+- Password strength checks and reuse warnings
+- Hide/reveal password display flow
+- Basic and advanced search (label/username/tag) + sorting
+- CSV/JSON import and export
+- Vault backup/restore
+- Clipboard copy for username/password with auto-clear timeout
 
-## 🚀 Getting Started
+## 🚀 Run
 
-### Prerequisites
+From `/home/runner/work/PasswordManager/PasswordManager/src`:
 
-- Java Development Kit (JDK) 8 or higher
-- Any terminal/command prompt
+```bash
+javac Main.java PasswordManager.java PasswordEntry.java VaultSecurity.java PasswordGenerator.java ClipboardUtil.java
+java Main
+```
 
-### Installation
+## 📁 Storage Files
 
-1. Save both Java files in the same directory:
-   - `Main.java`
-   - `PasswordManager.java`
-   - `PasswordEntry.java`
+- `vault.meta` – salt + verifier for master-password-based key derivation
+- `passwords.vault` – encrypted vault payload
 
-2. Compile all Java files:
-   ```bash
-   javac *.java
+Optional data exchange files:
+- CSV/JSON files created by export/import features
+- `*.vault` and `*.meta` backup copies from backup command
