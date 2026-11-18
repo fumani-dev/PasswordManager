@@ -1,14 +1,23 @@
-#IntelliJ files
+# IntelliJ IDEA
 .idea/
 *.iml
 
-#Compiled files
+# Java build output
 out/
+bin/
+target/
 *.class
 
-#logs
+# Logs
 *.log
 
-#OS files
+# OS metadata
 .DS_Store
-Thumbs.dl
+Thumbs.db
+
+# Password vault data
+# Keep credentials outside version control regardless of working directory.
+passwords.txt
+**/passwords.txt
+vault.meta
+passwords.vault

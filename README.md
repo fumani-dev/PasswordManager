@@ -17,16 +17,29 @@ A comprehensive command-line password management application built in Java. Stor
 
 ### Prerequisites
 
-- Java Development Kit (JDK) 8 or higher
+- Java Development Kit (JDK) 14 or higher
 - Any terminal/command prompt
 
-### Installation
+### Build and Run
 
-1. Save both Java files in the same directory:
-   - `Main.java`
-   - `PasswordManager.java`
-   - `PasswordEntry.java`
+From the repository root, compile the Java sources:
 
-2. Compile all Java files:
-   ```bash
-   javac *.java
+```bash
+javac -d out src/*.java
+```
+
+Run the application:
+
+```bash
+java -cp out Main
+```
+
+The application loads and saves password records in `passwords.txt` in the
+current working directory. This file is ignored by Git because it contains
+plain-text credential data.
+
+## 🗂️ Project Structure
+
+- `src/Main.java` - Starts the application and displays the menu
+- `src/PasswordManager.java` - Handles viewing, searching, editing, and deleting entries
+- `src/PasswordEntry.java` - Represents entries and manages file persistence
