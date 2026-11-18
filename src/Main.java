@@ -1,7 +1,13 @@
+/**
+ * Starts the password manager and coordinates its command-line menu.
+ */
 import java.util.Scanner;
 
 class Main {
 
+    /**
+     * Loads saved records and processes menu selections until the user exits.
+     */
     public static void main(String[] args) {
         PasswordManager manager = new PasswordManager();
         Scanner sc = new Scanner(System.in);
@@ -41,6 +47,7 @@ class Main {
         }
     }
 
+    /** Prints the available password manager commands. */
     static void mainMenu() {
         System.out.println("\n=== PASSWORD MANAGER ===");
         String[] options = {

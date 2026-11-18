@@ -1,8 +1,12 @@
+/**
+ * Implements viewing, searching, editing, and deleting password records.
+ */
 import java.util.Scanner;
 
 class PasswordManager {
     private Scanner sc = new Scanner(System.in);
 
+    /** Displays every saved password record with its numbered position. */
     public void viewEntries() {
         int dataSize = PasswordEntry.database.size();
 
@@ -24,6 +28,7 @@ class PasswordManager {
         }
     }
 
+    /** Prompts for and updates the label of a selected record. */
     public void editLabelValue() {
         if (PasswordEntry.database.isEmpty()) {
             System.out.println("No entries to edit.");
@@ -59,6 +64,7 @@ class PasswordManager {
         }
     }
 
+    /** Prompts for and updates the username of a selected record. */
     public void editUsernameValue() {
         if (PasswordEntry.database.isEmpty()) {
             System.out.println("No entries to edit.");
@@ -94,6 +100,7 @@ class PasswordManager {
         }
     }
 
+    /** Prompts for and updates the password of a selected record. */
     public void editPasswordValue() {
         if (PasswordEntry.database.isEmpty()) {
             System.out.println("No entries to edit.");
@@ -129,6 +136,7 @@ class PasswordManager {
         }
     }
 
+    /** Finds and displays records whose labels contain the search text. */
     public void searchByLabel() {
         if (PasswordEntry.database.isEmpty()) {
             System.out.println("No entries to search.");
@@ -155,6 +163,7 @@ class PasswordManager {
         }
     }
 
+    /** Prompts for and removes a selected record after confirmation. */
     public void deleteEntry() {
         if (PasswordEntry.database.isEmpty()) {
             System.out.println("No entries to delete.");
@@ -187,6 +196,7 @@ class PasswordManager {
         }
     }
 
+    /** Closes the scanner used for manager input. */
     public void closeScanner() {
         sc.close();
     }

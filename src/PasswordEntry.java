@@ -1,3 +1,7 @@
+/**
+ * Stores one password record and provides file-backed operations for the
+ * application's in-memory password database.
+ */
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -11,12 +15,18 @@ class PasswordEntry {
     final static private String FILE_NAME = "passwords.txt";
     private final static Scanner sc = new Scanner(System.in);
 
+    /**
+     * Creates a password record with the supplied label, username, and password.
+     */
     public PasswordEntry(String label, String username, String password) {
         this.label = label;
         this.username = username;
         this.password = password;
     }
 
+    /**
+     * Reads a new record from standard input and adds it to the database.
+     */
     public static void recordEntry() {
         System.out.print("\nLabel: ");
         String label = sc.nextLine();
@@ -35,6 +45,9 @@ class PasswordEntry {
         }
     }
 
+    /**
+     * Appends a password record to the persistent password file.
+     */
     public static void addPassword(String label, String username, String password) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME, true))) {
             String entry = label + ", " + username + ", " + password;
@@ -46,6 +59,9 @@ class PasswordEntry {
         }
     }
 
+    /**
+     * Loads all valid records from the persistent password file into memory.
+     */
     public static void loadAllPasswords() {
         database.clear();
 
@@ -72,6 +88,9 @@ class PasswordEntry {
         }
     }
 
+    /**
+     * Rewrites the persistent password file using the current database contents.
+     */
     public static void saveAllToFile() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME))) {
             for (PasswordEntry entry : database) {
@@ -84,34 +103,44 @@ class PasswordEntry {
         }
     }
 
+    /**
+     * Closes the scanner used for record input.
+     */
     public static void closeScanner() {
         sc.close();
     }
 
+    /** Returns this record's label. */
     public String getLabel() {
         return label;
     }
 
+    /** Returns this record's username. */
     public String getUsername() {
         return username;
     }
 
+    /** Returns this record's password. */
     public String getPassword() {
         return password;
     }
 
+    /** Replaces this record's password. */
     public void setPassword(String newPassword) {
         this.password = newPassword;
     }
 
+    /** Replaces this record's username. */
     public void setUsername(String newUsername) {
         this.username = newUsername;
     }
 
+    /** Replaces this record's label. */
     public void setLabel(String newLabel) {
         this.label = newLabel;
     }
 
+    /** Formats this record for display in the command-line interface. */
     @Override
     public String toString() {
         return "\n\tLabel: " + label + "\n\tUsername: " + username + "\n\tPassword: " + password + "\n";
